@@ -1,0 +1,110 @@
+#content .box-table-post .row-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+}
+
+#content .box-table-post .row-1 .box-left {
+    display: flex;
+    align-items: center;
+}
+
+#content .box-table-post .row-1 .box-left select {
+    width: 200px;
+    padding: 7px;
+    outline: none;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#content .box-table-post .row-1 .box-left button {
+    padding: 8px 15px;
+    background-color: #1BA4BE;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+#content .box-table-post .row-1 .box-left button:hover {
+    background-color: #0caccc;
+}
+
+#content .box-table-post .row-1 .box-right button {
+    padding: 8px 12px;
+    background-color: #1f9d54;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#content .box-table-post .row-1 .box-right button:hover {
+    background-color: #12ac52;
+}
+
+#content .box-table-post .row-1 .box-right button .icon-add {
+    margin-right: 3px;
+}
+
+
+
+#content .box-table-post table.row-2,
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid #E2E8F0;
+    font-size: 15px;
+    padding: 9px 12px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#content .box-table-post table.row-2 {
+    margin-top: 15px;
+    width: 100%;
+    text-align: left;
+}
+
+#content .box-table-post table.row-2 th {
+    font-weight: 500;
+}
+
+#content .box-table-post table.row-2 td .icon {
+    font-size: 17px;
+}
+
+#content .box-table-post table.row-2 td .icon-edit {
+    margin-right: 8px;
+}
+
+#content .box-table-post table.row-2 td .icon:hover {
+    color: #2852bd;
+}
+
+#content .box-table-post table.row-2 th {
+    font-size: 15px;
+}
+
+#content .box-table-post table.row-2 td {
+    font-size: 14px;
+    color: #1e2129;
+}
+
+#content .box-table-post table.row-2 tr:not(.col-title):hover {
+    background-color: #EEF1F6;
+}

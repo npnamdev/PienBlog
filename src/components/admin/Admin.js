@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import Header from './Header';
 import Sidebar from './Sidebar';
@@ -7,9 +7,15 @@ import './scss/Admin.scss';
 import './scss/Dashboard.scss';
 import './scss/User.scss';
 import './scss/Post.scss';
+
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const Admin = (props) => {
+
+    const navigate = useNavigate();
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
 
     const [toggleNavbar, setToggleNavbar] = useState(() => {
         const storedNavbar = localStorage.getItem('toggleNavbar');
@@ -22,7 +28,11 @@ const Admin = (props) => {
     }, [toggleNavbar]);
 
 
-
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate("/login");
+        }
+    }, [toggleNavbar]);
 
 
     return (

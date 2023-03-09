@@ -111,7 +111,7 @@
 th,
 td {
     border-collapse: collapse;
-    border: 1px solid #E2E8F0;
+    border: 1px solid #E2E8F0 !important;
     font-size: 15px;
     padding: 9px 12px;
     transition: all 0.2s ease-in-out;
@@ -151,10 +151,54 @@ td {
 }
 
 
-.demo {
-    padding: 20px 23px;
 
+
+#content .box-table .row-3 {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
+
+#content .box-table .row-3 .paginationn {
+    display: flex;
+}
+
+#content .box-table .row-3 .paginationn li {
+    list-style: none;
+}
+
+#content .box-table .row-3 .paginationn li a {
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1e2129;
+    border-radius: 5px;
+    margin: 0px 2px;
+    font-size: 15px;
+}
+
+#content .box-table .row-3 .paginationn li:first-child a,
+#content .box-table .row-3 .paginationn li:last-child a {
+    color: #a9abaa;
+    font-size: 20px;
+}
+
+#content .box-table .row-3 .paginationn li a:hover {
+    border: 1px solid #BDC3C7;
+}
+
+#content .box-table .row-3 .paginationn li.active a {
+    background-color: #546de5;
+    color: #fff;
+}
+
+
+
+
 
 .modal-add {
     .form-add {

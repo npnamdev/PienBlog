@@ -84,7 +84,9 @@ function ModalAddUser(props) {
         console.log(data);
         if (data && data.errCode === 0) {
             toast.success("Success");
-            dispatch(fetchAllUsers());
+            const page = 1;
+            const limit = 7;
+            dispatch(fetchAllUsers({ page, limit }));
             handleClose();
         } else {
             toast.error("Error");

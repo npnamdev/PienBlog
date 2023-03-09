@@ -1,11 +1,28 @@
-import avatar from '../../assets/images/avatar.jpg';
-import { BiMenu, BiSearch, BiBell, BiMessageAltDetail, BiUser, BiEdit, BiHelpCircle, BiCog } from "react-icons/bi";
+import { BiMenu, BiLogOut, BiBell, BiMessageAltDetail, BiUser, BiEdit, BiHelpCircle, BiCog } from "react-icons/bi";
 import { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from "../../redux/slices/authSlice";
+import { doLogout } from "../../services/apiService";
 
 
 const Header = (props) => {
     const { setToggleNavbar, toggleNavbar } = props;
 
+    const account = useSelector((state) => state.auth.account);
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+    const handleLogout = async () => {
+        let data = await doLogout(account.refreshToken);
+        if (data.errCode === 0) {
+            dispatch(logout());
+            navigate('/login');
+        }
+    }
+
+    //Profile
     const profileRef = useRef(null);
     const [toggleProfile, setToggleProfile] = useState(false);
 
@@ -30,12 +47,6 @@ const Header = (props) => {
                     className='menu-icon'
                     onClick={() => { setToggleNavbar(!toggleNavbar) }}
                 />
-                {/* <div class="search">
-                    <BiSearch
-                        className='search-icon'
-                    />
-                    <input class="search-input" type="text" placeholder="Search here..." />
-                </div> */}
                 <div class="profile">
                     <div class="box-left">
                         <BiBell
@@ -50,15 +61,15 @@ const Header = (props) => {
                         onClick={() => setToggleProfile(!toggleProfile)}
                         ref={profileRef}
                     >
-                        <img src={avatar} />
-                        <span>haiyen</span>
+                        <img src={account.image} />
+                        <span>{account.username}</span>
                     </div>
 
                     <ul
                         className={toggleProfile ? "profile-setting active" : "profile-setting"}
                     >
                         <li>
-                            <a href="">
+                            <a href="#">
                                 <BiUser
                                     className='icon'
                                 />
@@ -66,15 +77,7 @@ const Header = (props) => {
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <BiEdit
-                                    className='icon'
-                                />
-                                <span>Edit Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
+                            <a href="#">
                                 <BiHelpCircle
                                     className='icon'
                                 />
@@ -82,16 +85,23 @@ const Header = (props) => {
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="#">
                                 <BiCog
                                     className='icon'
                                 />
                                 <span>Setting</span>
                             </a>
                         </li>
+                        <li>
+                            <a onClick={() => handleLogout()}>
+                                <BiLogOut
+                                    className='icon'
+                                />
+                                <span>Logout</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-
             </div>
         </>
     );

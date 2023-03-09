@@ -1,10 +1,9 @@
 import axios from '../utils/axiosCustomize';
 
 
-const getAllUser = () => {
-    return axios.get('v1/api/users');
+const getAllUser = (page, limit, type, search, filter) => {
+    return axios.get(`v1/api/users/?page=${page}&limit=${limit}&type=${type}&search=${search}&filter=${filter}`);
 }
-
 
 const createUser = (username, email, password, phone, address, role, image) => {
     const formData = new FormData();
@@ -38,14 +37,13 @@ const deleteUser = (id) => {
 }
 
 
-const filterUserByRole = (role) => {
-    return axios.post('v1/api/users/filter', { role });
+const postLogin = (email, password) => {
+    return axios.post(`v1/api/login`, { email, password });
+}
+
+const doLogout = (refreshToken) => {
+    return axios.post(`v1/api/logout`, { refreshToken });
 }
 
 
-const searchUserByEmail = (email) => {
-    return axios.post('v1/api/users/search', { email });
-}
-
-
-export { getAllUser, createUser, updateUser, deleteUser, filterUserByRole, searchUserByEmail };
+export { getAllUser, createUser, updateUser, deleteUser, postLogin, doLogout };

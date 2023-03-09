@@ -11,9 +11,11 @@ import Dashboard from './components/admin/content/Dashboard/Dashboard';
 import ManagePost from './components/admin/content/Post/ManagePost';
 import ManageProduct from './components/admin/content/Product/ManageProduct';
 import ManageUser from './components/admin/content/User/ManageUser';
+import Login from './components/Auth/Login';
 
 
 const Layout = (props) => {
+
     return (
         <>
             <Routes>
@@ -26,6 +28,9 @@ const Layout = (props) => {
                         <Route path='product' element={<ManageProduct />} />
                         <Route path='user' element={<ManageUser />} />
                     </Route>
+
+
+                    <Route path='login' element={<Login />} />
                 </Route>
             </Routes>
 

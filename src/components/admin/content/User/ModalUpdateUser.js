@@ -16,11 +16,12 @@ function ModalUpdateUser(props) {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const [role, setRole] = useState("user");
+    const [role, setRole] = useState("");
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("");
 
     useEffect(() => {
+        console.log();
         if (dataUpdate) {
             setUsername(dataUpdate.username);
             setEmail(dataUpdate.email);
@@ -38,15 +39,6 @@ function ModalUpdateUser(props) {
 
     const handleClose = () => {
         setModalUpdateUser(false)
-        setUsername("");
-        setEmail("");
-        setPassword("");
-        setPhone("");
-        setAddress("");
-        setRole("user");
-        setImage("");
-        setPreviewImage("");
-        setDataUpdate([]);
     }
 
 
@@ -100,7 +92,9 @@ function ModalUpdateUser(props) {
 
         if (data && data.errCode === 0) {
             toast.success("Success");
-            dispatch(fetchAllUsers());
+            const page = 1;
+            const limit = 7;
+            dispatch(fetchAllUsers({ page, limit }));
             handleClose();
         } else {
             toast.error("Error");
@@ -170,7 +164,7 @@ function ModalUpdateUser(props) {
 
                             <div className="form-group">
                                 <label htmlFor="">Role</label>
-                                <select onChange={(e) => setRole(e.target.value)}>
+                                <select value={role} onChange={(e) => setRole(e.target.value)}>
                                     <option value="user">user</option>
                                     <option value="admin">admin</option>
                                 </select>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, } from "react";
 import { BiUser, BiCategory, BiBookOpen, BiBarChartAlt2 } from "react-icons/bi";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -8,17 +8,20 @@ const Information = (props) => {
 
     const dispatch = useDispatch();
     const listUsers = useSelector(state => state.user.listUsers);
+    const page = 1;
+    const limit = 7;
 
     useEffect(() => {
-        dispatch(fetchAllUsers())
+        dispatch(fetchAllUsers({ page, limit }))
     }, [])
+
 
     return (
         <>
             <ul class="row-1 box-dash">
                 <li>
                     <div class="box-left">
-                        <h3>{listUsers.length}</h3>
+                        <h3>{listUsers.totalUsers}</h3>
                         <span>Users</span>
                     </div>
                     <div class="box-right">

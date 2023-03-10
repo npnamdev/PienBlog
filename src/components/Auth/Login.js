@@ -40,28 +40,36 @@ function Login() {
 
 
     return (
-        <div className='wp-form'>
-            <input
-                type="text"
-                placeholder="Enter Email"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value) }}
-            />
-            <br /><br />
 
-            <input
-                type="password"
-                placeholder="Enter Password"
-                value={password}
-                onChange={(e) => { setPassword(e.target.value) }}
-                onKeyDown={(e) => handleKeyDown(e)}
-            />
-            <br /><br />
-
-            <button onClick={() => handleLogin()}>
-                Login
-            </button>
-        </div>
+        <div id="wp-form">
+            <div class="box-form">
+                <h1>Sign In</h1>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => { setEmail(e.target.value) }}
+                    />
+                </div>
+                <div class="form-group">
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => { setPassword(e.target.value) }}
+                        onKeyDown={(e) => handleKeyDown(e)}
+                    />
+                </div>
+                <button onClick={() => handleLogin()}>
+                    Đăng Nhập
+                </button>
+                <div class="form-bottom">
+                    <p>Bạn chưa có tài khoản?</p><span>Đăng ký</span>
+                </div>
+                <p class="forgot-password">Quên Mật Khẩu?</p>
+            </div>
+        </div >
     );
 }
 
